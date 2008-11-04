@@ -1,0 +1,235 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8BBB66DA0E97300F008A9B44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38415A207C326C0008110E3 /* Foundation.framework */; };
+		8BBB67790E9730B2008A9B44 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBB67780E9730B2008A9B44 /* AddressBook.framework */; };
+		8BBB68DC0E97B329008A9B44 /* NSString+PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB68DB0E97B329008A9B44 /* NSString+PhoneNumber.m */; };
+		8BE771DE0EC0D1F3008DEBFF /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE771DD0EC0D1F3008DEBFF /* QSCore.framework */; };
+		E3C0E24C07C45F18003024FD /* VocitoCallAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E3C0E24A07C45F18003024FD /* VocitoCallAction.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8BBB67780E9730B2008A9B44 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = /System/Library/Frameworks/AddressBook.framework; sourceTree = "<absolute>"; };
+		8BBB67D70E973A8C008A9B44 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		8BBB68DA0E97B329008A9B44 /* NSString+PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PhoneNumber.h"; path = "../NSString+PhoneNumber.h"; sourceTree = SOURCE_ROOT; };
+		8BBB68DB0E97B329008A9B44 /* NSString+PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PhoneNumber.m"; path = "../NSString+PhoneNumber.m"; sourceTree = SOURCE_ROOT; };
+		8BE771DD0EC0D1F3008DEBFF /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QSCore.framework; path = ../externals/quicksilver/QSCore.framework; sourceTree = SOURCE_ROOT; };
+		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1AC9740486D14A00FE50C9 /* Vocito Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Vocito Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E38415A207C326C0008110E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		E3C0E24907C45F18003024FD /* VocitoCallAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocitoCallAction.h; sourceTree = "<group>"; };
+		E3C0E24A07C45F18003024FD /* VocitoCallAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocitoCallAction.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D1AC96E0486D14A00FE50C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BBB66DA0E97300F008A9B44 /* Foundation.framework in Frameworks */,
+				8BBB67790E9730B2008A9B44 /* AddressBook.framework in Frameworks */,
+				8BE771DE0EC0D1F3008DEBFF /* QSCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0259C574FE90428111CA0C5A /* QSAdiumPlugIn */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF9E0370C38000C91783 /* Classes */,
+				32DBCF9F0370C38200C91783 /* Other Sources */,
+				0259C582FE90428111CA0C5A /* Resources */,
+				1ED78706FE9D4A0611CA0C5A /* Products */,
+				2E58F364FFB232C311CA0CBA /* Frameworks */,
+			);
+			name = QSAdiumPlugIn;
+			sourceTree = "<group>";
+		};
+		0259C582FE90428111CA0C5A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1AC9730486D14A00FE50C9 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1ED78706FE9D4A0611CA0C5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1AC9740486D14A00FE50C9 /* Vocito Module.qsplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BE771DD0EC0D1F3008DEBFF /* QSCore.framework */,
+				8BBB67D70E973A8C008A9B44 /* ApplicationServices.framework */,
+				8BBB67780E9730B2008A9B44 /* AddressBook.framework */,
+				E38415A207C326C0008110E3 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32DBCF9E0370C38000C91783 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8BBB68DA0E97B329008A9B44 /* NSString+PhoneNumber.h */,
+				8BBB68DB0E97B329008A9B44 /* NSString+PhoneNumber.m */,
+				E3C0E24907C45F18003024FD /* VocitoCallAction.h */,
+				E3C0E24A07C45F18003024FD /* VocitoCallAction.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32DBCF9F0370C38200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1AC9600486D14A00FE50C9 /* Vocito Module */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D9D68B10A649E600004F137 /* Build configuration list for PBXNativeTarget "Vocito Module" */;
+			buildPhases = (
+				8D1AC96A0486D14A00FE50C9 /* Sources */,
+				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Vocito Module";
+			productInstallPath = "$(HOME)/Developer/Palettes";
+			productName = QSAdiumPlugIn;
+			productReference = 8D1AC9740486D14A00FE50C9 /* Vocito Module.qsplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0259C573FE90428111CA0C5A /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 7D9D68B90A649E600004F137 /* Build configuration list for PBXProject "QSVocitoPlugIn copy" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 0259C574FE90428111CA0C5A /* QSAdiumPlugIn */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1AC9600486D14A00FE50C9 /* Vocito Module */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D1AC96A0486D14A00FE50C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3C0E24C07C45F18003024FD /* VocitoCallAction.m in Sources */,
+				8BBB68DC0E97B329008A9B44 /* NSString+PhoneNumber.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7D9D68B20A649E600004F137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(SRCROOT)/Shared/",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../externals/quicksilver\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = QSVocito_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Shared/";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = "-bundle";
+				PRODUCT_NAME = "Vocito Module";
+				WRAPPER_EXTENSION = qsplugin;
+			};
+			name = Debug;
+		};
+		7D9D68B30A649E600004F137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT,
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../externals/quicksilver\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = QSVocito_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = "-bundle";
+				PRODUCT_NAME = "Vocito Module";
+				WRAPPER_EXTENSION = qsplugin;
+			};
+			name = Release;
+		};
+		7D9D68BA0A649E600004F137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		7D9D68BB0A649E600004F137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D9D68B10A649E600004F137 /* Build configuration list for PBXNativeTarget "Vocito Module" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D9D68B20A649E600004F137 /* Debug */,
+				7D9D68B30A649E600004F137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7D9D68B90A649E600004F137 /* Build configuration list for PBXProject "QSVocitoPlugIn copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D9D68BA0A649E600004F137 /* Debug */,
+				7D9D68BB0A649E600004F137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0259C573FE90428111CA0C5A /* Project object */;
+}
