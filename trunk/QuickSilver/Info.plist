@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Vocito Module</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.google.Vocito.QSAddressBookPlugIn</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Vocito Module</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2008, Google Inc.</string>
+	<key>QSActions</key>
+	<dict>
+		<key>VocitoCallNumberAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>VocitoCallNumberAction</string>
+			<key>actionSelector</key>
+			<string>call:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>com.google.Vocito</string>
+			<key>name</key>
+			<string>Call using Vocito</string>
+			<key>precedence</key>
+			<integer>3</integer>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+		<key>VocitoCallContactAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>VocitoCallContactAction</string>
+			<key>actionSelector</key>
+			<string>call:</string>
+			<key>directTypes</key>
+			<array>
+				<string>ABPeopleUIDsPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>com.google.Vocito</string>
+			<key>name</key>
+			<string>Call using Vocito</string>
+			<key>precedence</key>
+			<integer>3</integer>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string>Google Inc.</string>
+		<key>categories</key>
+		<array>
+			<string>Contacts</string>
+			<string>Applications</string>
+			<string>Communication</string>
+		</array>
+		<key>description</key>
+		<string>Calls contacts using Vocito</string>
+		<key>extendedDescription</key>
+		<string>Adds actions for calling phone numbers using Vocito</string>
+		<key>icon</key>
+		<string>com.google.Vocito</string>
+		<key>relatedBundles</key>
+		<array>
+			<string>com.google.Vocito</string>
+		</array>
+		<key>requiresFeature</key>
+		<string>0</string>
+	</dict>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSActionProviders</key>
+		<dict>
+			<key>VocitoCallContactAction</key>
+			<string>VocitoCallContactAction</string>
+			<key>VocitoCallNumberAction</key>
+			<string>VocitoCallNumberAction</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
