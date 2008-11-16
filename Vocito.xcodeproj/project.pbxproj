@@ -56,6 +56,8 @@
 		8BD1EC490E6992B800384FC3 /* VocitoAddressBookAction.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		8BDF61300ECFA54D006AF1EF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
 		8BDF613B0ECFA57C006AF1EF /* Sparkle.framework in Copy Sparkle */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
+		8BDF620B0ECFF371006AF1EF /* GTMGetURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */; };
+		8BDF622D0ECFF3FB006AF1EF /* VocitoTelURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDF622C0ECFF3FB006AF1EF /* VocitoTelURLHandler.m */; };
 		8BE843450E91EBF700C611B0 /* GTMDebugThreadValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */; };
 		8BE846600E930AD300C611B0 /* Vocito.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8465F0E930AD300C611B0 /* Vocito.pdf */; };
 		8BE846650E930C2300C611B0 /* VocitoInvert.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846640E930C2300C611B0 /* VocitoInvert.pdf */; };
@@ -178,8 +180,10 @@
 		8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QSVocitoPlugIn.xcodeproj; path = QuickSilver/QSVocitoPlugIn.xcodeproj; sourceTree = "<group>"; };
 		8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = VocitoAddressBookAction.applescript; sourceTree = "<group>"; };
 		8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = externals/Sparkle.framework; sourceTree = "<group>"; };
-		8BE843430E91EBF700C611B0 /* GTMDebugThreadValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDebugThreadValidation.h; path = DebugUtils/GTMDebugThreadValidation.h; sourceTree = "<group>"; };
-		8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMDebugThreadValidation.m; path = DebugUtils/GTMDebugThreadValidation.m; sourceTree = "<group>"; };
+		8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMGetURLHandler.m; sourceTree = "<group>"; };
+		8BDF622C0ECFF3FB006AF1EF /* VocitoTelURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocitoTelURLHandler.m; sourceTree = "<group>"; };
+		8BE843430E91EBF700C611B0 /* GTMDebugThreadValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDebugThreadValidation.h; sourceTree = "<group>"; };
+		8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMDebugThreadValidation.m; sourceTree = "<group>"; };
 		8BE8465F0E930AD300C611B0 /* Vocito.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Vocito.pdf; sourceTree = "<group>"; };
 		8BE846640E930C2300C611B0 /* VocitoInvert.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = VocitoInvert.pdf; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				8B64357B0E65A7DE0098096B /* VocitoDialCommand.m */,
 				8B5FCC540E673056006CF8F6 /* VocitoDialService.h */,
 				8B5FCC550E673056006CF8F6 /* VocitoDialService.m */,
+				8BDF622C0ECFF3FB006AF1EF /* VocitoTelURLHandler.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -318,10 +323,9 @@
 		8B3D25D30EAE74D8004EA504 /* google-toolbox-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				8BDF62090ECFF35B006AF1EF /* AppKit */,
 				8B3D25EF0EAE760A004EA504 /* DebugUtils */,
 				8B3D25EE0EAE75F0004EA504 /* Foundation */,
-				8BE843430E91EBF700C611B0 /* GTMDebugThreadValidation.h */,
-				8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */,
 				8B5FD5920E688839006CF8F6 /* GTMDefines.h */,
 			);
 			name = "google-toolbox-for-mac";
@@ -353,6 +357,8 @@
 		8B3D25EF0EAE760A004EA504 /* DebugUtils */ = {
 			isa = PBXGroup;
 			children = (
+				8BE843430E91EBF700C611B0 /* GTMDebugThreadValidation.h */,
+				8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */,
 				8B5FD79F0E68AC79006CF8F6 /* GTMMethodCheck.h */,
 				8B5FD79D0E68AC73006CF8F6 /* GTMMethodCheck.m */,
 				8B5FD7C00E68AC87006CF8F6 /* GTMDebugSelectorValidation.h */,
@@ -403,6 +409,14 @@
 				8BBB69350E9802DA008A9B44 /* Call using Vocito.action */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8BDF62090ECFF35B006AF1EF /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */,
+			);
+			path = AppKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "copyDir=\"${BUILD_DIR}/${CONFIGURATION}/${CONTENTS_FOLDER_PATH}/Library/Automator/\"\necho \"$copyDir\"\nmkdir -p \"$copyDir\"\ncp -R \"Automator/build/${CONFIGURATION}/Call using Vocito.action\" \"$copyDir\"";
+			shellScript = "# Copy Automator stuff\ncopyDir=\"${BUILD_DIR}/${CONFIGURATION}/${CONTENTS_FOLDER_PATH}/Library/Automator/\"\nmkdir -p \"$copyDir\"\ncp -R \"Automator/build/${CONFIGURATION}/Call using Vocito.action\" \"$copyDir\"\n\n# Remove unnecessary Sparkle stuff\nsparkleDir=\"${BUILD_DIR}/${CONFIGURATION}/${CONTENTS_FOLDER_PATH}/Frameworks/Sparkle.framework\"\nrm -rf \"$sparkleDir/Resources/de.lproj\"\nrm -rf \"$sparkleDir/Resources/es.lproj\"\nrm -rf \"$sparkleDir/Resources/fr.lproj\"\nrm -f \"$sparkleDir/Resources/fr_CA.lproj\"\nrm -rf \"$sparkleDir/Resources/it.lproj\"\nrm -rf \"$sparkleDir/Resources/nl.lproj\"\nrm -rf \"$sparkleDir/Resources/ru.lproj\"\nrm -rf \"$sparkleDir/Resources/sv.lproj\"\nrm -rf \"$sparkleDir/Current/Headers\"\nrm -f \"$sparkleDir/Headers\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -541,6 +555,8 @@
 				8B90DB9E0E80057900252773 /* GTMObjC2Runtime.m in Sources */,
 				8BE843450E91EBF700C611B0 /* GTMDebugThreadValidation.m in Sources */,
 				8BBB68D80E97B2A5008A9B44 /* NSString+PhoneNumber.m in Sources */,
+				8BDF620B0ECFF371006AF1EF /* GTMGetURLHandler.m in Sources */,
+				8BDF622D0ECFF3FB006AF1EF /* VocitoTelURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

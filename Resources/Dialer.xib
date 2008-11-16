@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">1040</int>
 		<string key="IBDocument.SystemVersion">9F33</string>
-		<string key="IBDocument.InterfaceBuilderVersion">672</string>
+		<string key="IBDocument.InterfaceBuilderVersion">677</string>
 		<string key="IBDocument.AppKitVersion">949.34</string>
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>com.apple.AddressBook.ibplugin</string>
 			<string>com.apple.InterfaceBuilderKit</string>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+		</object>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -45,7 +55,6 @@
 							<int key="NSvFlags">-2147479284</int>
 							<string key="NSFrame">{{0, -46}, {451, 150}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<int key="ABPPFlags">536870912</int>
 							<nil key="ABPPAutosaveName"/>
 							<object class="NSMutableArray" key="ABPPColumns">
@@ -61,7 +70,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{57, 72}, {185, 22}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSComboBoxCell" key="NSCell" id="868202817">
 								<int key="NSCellFlags">343014976</int>
@@ -177,7 +185,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{57, 47}, {185, 22}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSComboBoxCell" key="NSCell" id="783431974">
 								<int key="NSCellFlags">343014976</int>
@@ -253,7 +260,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 76}, {32, 14}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="816743639">
 								<int key="NSCellFlags">68288064</int>
@@ -275,7 +281,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 52}, {32, 14}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="366765274">
 								<int key="NSCellFlags">68288064</int>
@@ -292,7 +297,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{249, 72}, {20, 24}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="149186271">
 								<int key="NSCellFlags">67239424</int>
@@ -321,7 +325,6 @@
 							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{57, 19}, {183, 25}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="415550157">
 								<int key="NSCellFlags">-2080244224</int>
@@ -347,7 +350,6 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{245, 19}, {28, 24}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSegmentedCell" key="NSCell" id="854946057">
 								<int key="NSCellFlags">-2080244224</int>
@@ -374,7 +376,6 @@
 							<int key="NSvFlags">10</int>
 							<string key="NSFrame">{{0, -48}, {470, 5}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
 								<int key="NSCellFlags">67239424</int>
@@ -395,7 +396,6 @@
 					</object>
 					<string key="NSFrameSize">{293, 113}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
@@ -407,7 +407,8 @@
 					<object class="NSMenuItem" id="1012514199">
 						<reference key="NSMenu" ref="597649129"/>
 						<string type="base64-UTF8" key="NSTitle">U2F2ZSBBcyBBcHBsaWNhdGlvbuKApg</string>
-						<string key="NSKeyEquiv"/>
+						<string key="NSKeyEquiv">s</string>
+						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="232194636">
 							<string key="NSClassName">NSImage</string>
@@ -439,7 +440,8 @@
 					<object class="NSMenuItem" id="648540584">
 						<reference key="NSMenu" ref="597649129"/>
 						<string type="base64-UTF8" key="NSTitle">UHJlZmVyZW5jZXPigKY</string>
-						<string key="NSKeyEquiv"/>
+						<string key="NSKeyEquiv">,</string>
+						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="232194636"/>
 						<reference key="NSMixedImage" ref="592436270"/>
@@ -457,7 +459,8 @@
 					<object class="NSMenuItem" id="441800110">
 						<reference key="NSMenu" ref="597649129"/>
 						<string key="NSTitle">Quit</string>
-						<string key="NSKeyEquiv"/>
+						<string key="NSKeyEquiv">q</string>
+						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="232194636"/>
 						<reference key="NSMixedImage" ref="592436270"/>
@@ -994,14 +997,14 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../../../opensource/google-toolbox-for-mac/Foundation/GTMNSAppleEventDescriptor+Foundation.h</string>
+						<string key="minorKey">Vocito.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Vocito.h</string>
+						<string key="minorKey">externals/google-toolbox-for-mac/Foundation/GTMNSAppleEventDescriptor+Foundation.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1071,7 +1074,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Vocito.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Vocito.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

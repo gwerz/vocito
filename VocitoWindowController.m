@@ -27,6 +27,7 @@
 
 @interface VocitoWindowController (VocitoWindowControllerPrivate)
 - (void)pickerSelectionChanged:(NSNotification*)notification;
+- (void)updatePrimaryNumber:(NSString *)primaryNumber;
 @end 
 
 @implementation VocitoWindowController
@@ -41,6 +42,8 @@
 - (void)dealloc {
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
   [nc removeObserver:self];
+  [selectedRecord_ release];
+  [selectedIdentifier_ release];
   [super dealloc];
 }
 
@@ -105,6 +108,7 @@
 - (IBAction)dial:(id)sender {
   NSString *toValue = [toNumber_ stringValue];
   NSString *fromValue = [fromNumber_ stringValue];
+  [self updatePrimaryNumber:toValue];
   [[delegate_ dialerController] callPhone:toValue 
                                  fromPhone:fromValue 
                              waitUntilDone:NO 
@@ -137,31 +141,69 @@
 - (void)pickerSelectionChanged:(NSNotification*)notification {
   if (![addressBook_ isHidden]) {
     NSArray *items = [addressBook_ selectedValues];
+    [selectedIdentifier_ autorelease];
+    [selectedRecord_ autorelease];
+    selectedRecord_ = nil;
+    selectedIdentifier_ = nil;
     if ([items count]) {
       [toNumber_ setStringValue:[items objectAtIndex:0]];
+      NSArray *selectedRecords = [addressBook_ selectedRecords];
+      if ([selectedRecords count]) {
+        selectedRecord_ = [[selectedRecords objectAtIndex:0] retain];
+        NSArray *selectedIdentifiers 
+          = [addressBook_ selectedIdentifiersForPerson:selectedRecord_];
+        if ([selectedIdentifiers count]) {
+          selectedIdentifier_ = [[selectedIdentifiers objectAtIndex:0] retain];
+        }
+      }
+    } else {
+      [toNumber_ setStringValue:@""];
     }
   }
 }
 
+- (void)updatePrimaryNumber:(NSString *)primaryNumber {
+  if (!selectedRecord_ || !selectedIdentifier_ || !primaryNumber) return;
+  ABMultiValue *phoneNumbers
+    = [selectedRecord_ valueForProperty:kABPhoneProperty];
+  unsigned int index = [phoneNumbers indexForIdentifier:selectedIdentifier_];
+  NSString *phoneNumber = [phoneNumbers valueAtIndex:index];
+  NSString *primaryIdentifier = [phoneNumbers primaryIdentifier];
+  if ([phoneNumber isEqualToString:primaryNumber] 
+      && ![primaryIdentifier isEqualToString:selectedIdentifier_]) {
+    ABMutableMultiValue *newNumbers = [phoneNumbers mutableCopy];
+    [newNumbers setPrimaryIdentifier:selectedIdentifier_];
+    [selectedRecord_ setValue:newNumbers forProperty:kABPhoneProperty];
+    ABAddressBook *book = [ABAddressBook sharedAddressBook];
+    [book save];
+  }
+}
+
 - (IBAction)goToGrandCentral:(id)sender {
-  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.grandcentral.com"]];
+  NSURL *gcURL = [NSURL URLWithString:@"http://www.grandcentral.com"];
+  [[NSWorkspace sharedWorkspace] openURL:gcURL];
 }
 
 - (IBAction)saveAsApplication:(id)sender {
   NSString *nameFormat = NSLocalizedString(@"Call %@ from %@", nil);
-  NSString *name = [NSString stringWithFormat:nameFormat, [toNumber_ stringValue], [fromNumber_ stringValue]];
+  NSString *name = [NSString stringWithFormat:nameFormat, 
+                    [toNumber_ stringValue], 
+                    [fromNumber_ stringValue]];
   NSSavePanel *panel = [NSSavePanel savePanel];
   [panel setRequiredFileType:@"app"];
   [NSApp activateIgnoringOtherApps:YES];
-  if ([panel runModalForDirectory:nil file:name] != NSFileHandlingPanelOKButton) {
+  if ([panel runModalForDirectory:nil 
+                             file:name] != NSFileHandlingPanelOKButton) {
     return;
   }
   NSFileManager *fm = [NSFileManager defaultManager];
   NSString *errorString = nil;
   NSString *scriptString = [NSString stringWithFormat:
-                            @"tell application id \"com.google.vocito\" to dial \"%@\" from \"%@\"",
+                            @"tell application id \"com.google.Vocito\""
+                            @"to dial \"%@\" from \"%@\"",
                             [toNumber_ stringValue], [fromNumber_ stringValue]];
-  NSAppleScript *script = [[[NSAppleScript alloc] initWithSource:scriptString] autorelease];
+  NSAppleScript *script 
+    = [[[NSAppleScript alloc] initWithSource:scriptString] autorelease];
   NSDictionary *errorDict = nil;
   if (![script compileAndReturnError:&errorDict]) {
     errorString = [errorDict objectForKey:NSAppleScriptErrorMessage];
@@ -173,41 +215,54 @@
     goto errorOccurred;
   }
   
-  NSString *bundle = [[NSBundle mainBundle] pathForResource:@"ScriptTemplate" ofType:@"app"];
+  NSString *bundle = [[NSBundle mainBundle] pathForResource:@"ScriptTemplate" 
+                                                     ofType:@"app"];
   NSString *filename = [panel filename];
   if ([fm fileExistsAtPath:filename]) {
     if (![fm removeFileAtPath:filename handler:nil]) {
-      errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to remove %@.", nil), filename];
+      NSString *format = NSLocalizedString(@"Unable to remove %@.", nil);
+      errorString = [NSString stringWithFormat:format, filename];
       goto errorOccurred;
     }
   }
   if (![fm copyPath:bundle toPath:filename handler:nil]) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to copy %@ to %@.", nil), bundle, filename];
+    NSString *format = NSLocalizedString(@"Unable to copy %@ to %@.", nil);
+    errorString = [NSString stringWithFormat:format, bundle, filename];
     goto errorOccurred;
   }
-  NSString *dictPath = [filename stringByAppendingPathComponent:@"Contents/Info.plist"];    
-  NSMutableDictionary *infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:dictPath];
+  NSString *dictPath 
+    = [filename stringByAppendingPathComponent:@"Contents/Info.plist"];    
+  NSMutableDictionary *infoDict 
+    = [NSMutableDictionary dictionaryWithContentsOfFile:dictPath];
   if (!infoDict) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to open %@.", nil), dictPath];
+    NSString *format = NSLocalizedString(@"Unable to open %@.", nil);
+    errorString = [NSString stringWithFormat:format, dictPath];
     goto errorOccurred;
   }
-  [infoDict setObject:[[filename lastPathComponent] stringByDeletingPathExtension] forKey:@"Bundle name"];
+  name = [[filename lastPathComponent] stringByDeletingPathExtension];
+  [infoDict setObject:name forKey:@"Bundle name"];
   if (![fm removeFileAtPath:dictPath handler:nil]) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to remove %@.", nil), dictPath];
+    NSString *format = NSLocalizedString(@"Unable to remove %@.", nil);
+    errorString = [NSString stringWithFormat:format, dictPath];
     goto errorOccurred;
   }
   if (![infoDict writeToFile:dictPath atomically:YES]) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to write file to %@.", nil), dictPath];
+    NSString *format = NSLocalizedString(@"Unable to write file to %@.", nil);
+    errorString = [NSString stringWithFormat:format, dictPath];
     goto errorOccurred;
   }
   NSBundle *scriptBundle = [NSBundle bundleWithPath:filename];
-  NSString *scriptPath = [scriptBundle pathForResource:@"main" ofType:@"scpt" inDirectory:@"Scripts"];
+  NSString *scriptPath = [scriptBundle pathForResource:@"main" 
+                                                ofType:@"scpt" 
+                                           inDirectory:@"Scripts"];
   if (![fm removeFileAtPath:scriptPath handler:nil]) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to remove file %@.", nil), scriptPath];
+    NSString *format = NSLocalizedString(@"Unable to remove file %@.", nil);
+    errorString = [NSString stringWithFormat:format, scriptPath];
     goto errorOccurred;
   }
   if (![data writeToFile:scriptPath atomically:YES]) {
-    errorString = [NSString stringWithFormat:NSLocalizedString(@"Unable to write file to %@.", nil), scriptPath];
+    NSString *format = NSLocalizedString(@"Unable to write file to %@.", nil);
+    errorString = [NSString stringWithFormat:format, scriptPath];
     goto errorOccurred;
   }
   [[NSWorkspace sharedWorkspace] noteFileSystemChanged:filename];
@@ -215,7 +270,8 @@
   
   errorOccurred: 
   [fm removeFileAtPath:filename handler:nil];
-  NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Unable to create application.", nil)
+  NSString *message = NSLocalizedString(@"Unable to create application.", nil);
+  NSAlert *alert = [NSAlert alertWithMessageText:message
                                    defaultButton:nil
                                  alternateButton:nil
                                      otherButton:nil
