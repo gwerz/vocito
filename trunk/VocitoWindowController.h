@@ -28,6 +28,8 @@
   IBOutlet NSComboBox *fromNumber_;
   IBOutlet NSComboBox *toNumber_;
   IBOutlet ABPeoplePickerView *addressBook_;
+  ABPerson *selectedRecord_;
+  NSString *selectedIdentifier_;
   VocitoAppDelegate *delegate_;
   NSSize addressBookShownSize_;
   NSSize addressBookHiddenSize_;

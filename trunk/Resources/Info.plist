@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleDocumentTypes</key>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
@@ -50,5 +52,26 @@
 	</array>
 	<key>OSAScriptingDefinition</key>
 	<string>Vocito.sdef</string>
+	<key>SUFeedURL</key>
+	<string>http://vocito.googlecode.com/svn/trunk/installer/VocitoAppcast.xml</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>100000</integer>
+	<key>SUAllowsAutomaticUpdates</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>GTMBundleURLClass</key>
+			<string>VocitoTelURLHandler</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tel</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
