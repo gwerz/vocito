@@ -54,6 +54,8 @@
 		8BBB68D80E97B2A5008A9B44 /* NSString+PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB68D70E97B2A5008A9B44 /* NSString+PhoneNumber.m */; };
 		8BBB69370E98030F008A9B44 /* Vocito Module.qsplugin in Resources */ = {isa = PBXBuildFile; fileRef = 8BBB69000E98002A008A9B44 /* Vocito Module.qsplugin */; };
 		8BD1EC490E6992B800384FC3 /* VocitoAddressBookAction.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		8BDF61300ECFA54D006AF1EF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
+		8BDF613B0ECFA57C006AF1EF /* Sparkle.framework in Copy Sparkle */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
 		8BE843450E91EBF700C611B0 /* GTMDebugThreadValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */; };
 		8BE846600E930AD300C611B0 /* Vocito.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8465F0E930AD300C611B0 /* Vocito.pdf */; };
 		8BE846650E930C2300C611B0 /* VocitoInvert.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846640E930C2300C611B0 /* VocitoInvert.pdf */; };
@@ -92,6 +94,20 @@
 			remoteInfo = "Call using Vocito";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8BDF614D0ECFA583006AF1EF /* Copy Sparkle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8BDF613B0ECFA57C006AF1EF /* Sparkle.framework in Copy Sparkle */,
+			);
+			name = "Copy Sparkle";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -161,6 +177,7 @@
 		8BBB68D70E97B2A5008A9B44 /* NSString+PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PhoneNumber.m"; sourceTree = "<group>"; };
 		8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QSVocitoPlugIn.xcodeproj; path = QuickSilver/QSVocitoPlugIn.xcodeproj; sourceTree = "<group>"; };
 		8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = VocitoAddressBookAction.applescript; sourceTree = "<group>"; };
+		8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = externals/Sparkle.framework; sourceTree = "<group>"; };
 		8BE843430E91EBF700C611B0 /* GTMDebugThreadValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDebugThreadValidation.h; path = DebugUtils/GTMDebugThreadValidation.h; sourceTree = "<group>"; };
 		8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMDebugThreadValidation.m; path = DebugUtils/GTMDebugThreadValidation.m; sourceTree = "<group>"; };
 		8BE8465F0E930AD300C611B0 /* Vocito.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Vocito.pdf; sourceTree = "<group>"; };
@@ -178,6 +195,7 @@
 				8B6B74340E64B467000E4ADF /* Security.framework in Frameworks */,
 				8B1149A10E64BFB600131E61 /* Carbon.framework in Frameworks */,
 				8B5FD15E0E684FBA006CF8F6 /* AddressBook.framework in Frameworks */,
+				8BDF61300ECFA54D006AF1EF /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +264,7 @@
 			children = (
 				8B5FD1CC0E685204006CF8F6 /* Call using Vocito.xcodeproj */,
 				8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */,
+				8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */,
 				8B90DB3C0E80039A00252773 /* XcodeConfig */,
 				8B3D25D30EAE74D8004EA504 /* google-toolbox-for-mac */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -397,6 +416,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8BD1EC580E6992CE00384FC3 /* AppleScript */,
+				8BDF614D0ECFA583006AF1EF /* Copy Sparkle */,
 				8B5FD1EA0E685270006CF8F6 /* ShellScript */,
 			);
 			buildRules = (
@@ -562,6 +582,10 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/externals\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vocito_Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
@@ -572,6 +596,10 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/externals\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vocito_Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
