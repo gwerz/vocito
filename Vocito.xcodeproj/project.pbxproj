@@ -55,6 +55,7 @@
 		8BBB69370E98030F008A9B44 /* Vocito Module.qsplugin in Resources */ = {isa = PBXBuildFile; fileRef = 8BBB69000E98002A008A9B44 /* Vocito Module.qsplugin */; };
 		8BD1EC490E6992B800384FC3 /* VocitoAddressBookAction.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		8BDA35590ED217F60051CE98 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA35570ED217F60051CE98 /* dsa_pub.pem */; };
+		8BDA35EF0ED2268B0051CE98 /* releaseNotes_1_0_0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA35EE0ED2268B0051CE98 /* releaseNotes_1_0_0.txt */; };
 		8BDF61300ECFA54D006AF1EF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
 		8BDF613B0ECFA57C006AF1EF /* Sparkle.framework in Copy Sparkle */ = {isa = PBXBuildFile; fileRef = 8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */; };
 		8BDF620B0ECFF371006AF1EF /* GTMGetURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */; };
@@ -181,8 +182,8 @@
 		8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QSVocitoPlugIn.xcodeproj; path = QuickSilver/QSVocitoPlugIn.xcodeproj; sourceTree = "<group>"; };
 		8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = VocitoAddressBookAction.applescript; sourceTree = "<group>"; };
 		8BDA35570ED217F60051CE98 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		8BDA35DF0ED224F90051CE98 /* releaseNotes_1_0_0.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = releaseNotes_1_0_0.html; sourceTree = "<group>"; };
 		8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VocitoAppcast.xml; sourceTree = "<group>"; };
+		8BDA35EE0ED2268B0051CE98 /* releaseNotes_1_0_0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseNotes_1_0_0.txt; sourceTree = "<group>"; };
 		8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = externals/Sparkle.framework; sourceTree = "<group>"; };
 		8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMGetURLHandler.m; sourceTree = "<group>"; };
 		8BDF622C0ECFF3FB006AF1EF /* VocitoTelURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocitoTelURLHandler.m; sourceTree = "<group>"; };
@@ -428,7 +429,7 @@
 		8BDA35DE0ED224F90051CE98 /* installer */ = {
 			isa = PBXGroup;
 			children = (
-				8BDA35DF0ED224F90051CE98 /* releaseNotes_1_0_0.html */,
+				8BDA35EE0ED2268B0051CE98 /* releaseNotes_1_0_0.txt */,
 				8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */,
 			);
 			path = installer;
@@ -530,6 +531,7 @@
 				8BE846600E930AD300C611B0 /* Vocito.pdf in Resources */,
 				8BE846650E930C2300C611B0 /* VocitoInvert.pdf in Resources */,
 				8BDA35590ED217F60051CE98 /* dsa_pub.pem in Resources */,
+				8BDA35EF0ED2268B0051CE98 /* releaseNotes_1_0_0.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

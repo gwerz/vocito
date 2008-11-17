@@ -1,0 +1,1 @@
+Initial Vocito 1.0 release.
