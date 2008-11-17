@@ -27,6 +27,7 @@
 #import "VocitoDialService.h"
 #import "GTMDefines.h"
 #import "GTMGarbageCollection.h"
+#import <Sparkle/Sparkle.h>
 
 @implementation VocitoAppDelegate
 - (id)init {
@@ -102,6 +103,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+  [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
   VocitoDialService *service = [[VocitoDialService alloc] init];
   [NSApp setServicesProvider:service];
   int installedVersion = [VocitoPreferences installedPluginVersion];
