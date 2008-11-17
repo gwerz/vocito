@@ -181,6 +181,8 @@
 		8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QSVocitoPlugIn.xcodeproj; path = QuickSilver/QSVocitoPlugIn.xcodeproj; sourceTree = "<group>"; };
 		8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = VocitoAddressBookAction.applescript; sourceTree = "<group>"; };
 		8BDA35570ED217F60051CE98 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		8BDA35DF0ED224F90051CE98 /* releaseNotes_1_0_0.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = releaseNotes_1_0_0.html; sourceTree = "<group>"; };
+		8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VocitoAppcast.xml; sourceTree = "<group>"; };
 		8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = externals/Sparkle.framework; sourceTree = "<group>"; };
 		8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMGetURLHandler.m; sourceTree = "<group>"; };
 		8BDF622C0ECFF3FB006AF1EF /* VocitoTelURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocitoTelURLHandler.m; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				8B5FD1CC0E685204006CF8F6 /* Call using Vocito.xcodeproj */,
 				8BBB68FB0E980029008A9B44 /* QSVocitoPlugIn.xcodeproj */,
 				8BDF612F0ECFA54D006AF1EF /* Sparkle.framework */,
+				8BDA35DE0ED224F90051CE98 /* installer */,
 				8B90DB3C0E80039A00252773 /* XcodeConfig */,
 				8B3D25D30EAE74D8004EA504 /* google-toolbox-for-mac */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -420,6 +423,15 @@
 				8BDA35570ED217F60051CE98 /* dsa_pub.pem */,
 			);
 			path = signingKeys;
+			sourceTree = "<group>";
+		};
+		8BDA35DE0ED224F90051CE98 /* installer */ = {
+			isa = PBXGroup;
+			children = (
+				8BDA35DF0ED224F90051CE98 /* releaseNotes_1_0_0.html */,
+				8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */,
+			);
+			path = installer;
 			sourceTree = "<group>";
 		};
 		8BDF62090ECFF35B006AF1EF /* AppKit */ = {
