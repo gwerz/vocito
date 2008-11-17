@@ -3,5 +3,14 @@
    <channel>
       <title>Vocito's Changelog</title>
       <link>http://vocito.googlecode.com/svn/trunk/installer/VocitoAppcast.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>
+      <item>
+        <title>Version 1.0</title>
+        <sparkle:releaseNotesLink>http://vocito.googlecode.com/svn/trunk/installer/releaseNotes_1_0_0.html</sparkle:releaseNotesLink>
+        <pubDate>Mon, 17 Nov 2008 13:15:00 -0800</pubDate>
+        <enclosure url="http://vocito.googlecode.com/files/Vocito_1.0.zip" sparkle:version="1.0" length="498358" type="application/octet-stream" sparkle:dsaSignature="MCwCFH87Amy+7wAlJFtMFL1VhdKBkCpfAhQ5koOT8tc2JK0VmsyZK1m3A/fI8w==" />
+       </item>
+
    </channel>
 </rss>
