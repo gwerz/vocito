@@ -21,9 +21,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Vocito 1.0 © 2008 Google Inc.</string>
+	<string>Vocito 1.0.1 © 2008 Google Inc.</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.4.0</string>
 	<key>LSUIElement</key>
