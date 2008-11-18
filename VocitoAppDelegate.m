@@ -133,6 +133,7 @@
       NSString *info = NSLocalizedString(@"Please restart Address Book and "
                                          @"Quıcĸsıɩⅴεʀ for them to take "
                                          @"effect.", nil);
+      [NSApp activateIgnoringOtherApps:YES];
       NSAlert *newInstalls = [NSAlert alertWithMessageText:message
                                              defaultButton:nil
                                            alternateButton:nil
