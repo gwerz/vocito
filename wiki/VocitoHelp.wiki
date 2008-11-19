@@ -20,25 +20,7 @@ Other notes:
 
 Have fun!
 
-= Trouble Shooting =
-  _ _*Q)* Vocito tells me that I have entered my login information incorrectly<br>
-  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Preferences" update your information with your correct login information. To get your login information, go to http://www.grandcentral.com and attempt to login there.
 
-  _ _*Q)* Vocito won't dial a 7 digit number<br>
-  _ _*A)* Vocito requires an area code, because Grand Central requires an area code. Please add an area code to make it a 10 digit number.
-
-  _ _*Q)* I logged out, and Vocito isn't in my menu bar anymore. How can I get it to stay there?<br>
-  _ _*A)* Add it to your startup items. 
-      # Go to System Preferences, and choose the "Accounts" panel. 
-      # Choose the "Login Items" tab. 
-      # Click on the "Plus" button at the bottom of the screen and select the Vocito application.
-    More information about Startup items is [http://support.apple.com/kb/HT2602 here]
-
-  _ _*Q)* Where do I report bugs?<br>
-  _ _*A)* [http://code.google.com/p/vocito/issues/list Click Here.] Please verify that there isn't already a similar bug in the queue.
-
-  _ _*Q)* I can't quit<br>
-  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Quit".
 
 = Address Book Support =
 Vocito installs an Address Book plugin. To use it, find a contact in Address Book and click on the label to the right of the phone number that you wish to call, and select the "Vocito Call" menu item.
@@ -95,3 +77,29 @@ Vocito also supports "tel" URLs, and will register itself as a handler for them.
 `tel:2501234567`
 
 and when clicked on, Vocito will dial that number from the last "From" number used.
+
+= Trouble Shooting and FAQ =
+  _ _*Q)* Vocito tells me that I have entered my login information incorrectly<br>
+  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Preferences" update your information with your correct login information. To get your login information, go to http://www.grandcentral.com and attempt to login there.
+
+  _ _*Q)* Vocito won't dial a 7 digit number<br>
+  _ _*A)* Vocito requires an area code, because Grand Central requires an area code. Please add an area code to make it a 10 digit number.
+
+  _ _*Q)* I logged out, and Vocito isn't in my menu bar anymore. How can I get it to stay there?<br>
+  _ _*A)* Add it to your startup items. 
+      # Go to System Preferences, and choose the "Accounts" panel. 
+      # Choose the "Login Items" tab. 
+      # Click on the "Plus" button at the bottom of the screen and select the Vocito application.
+    More information about Startup items is [http://support.apple.com/kb/HT2602 here]
+
+  _ _*Q)* Where do I report bugs?<br>
+  _ _*A)* [http://code.google.com/p/vocito/issues/list Click Here.] Please verify that there isn't already a similar bug in the queue.
+
+  _ _*Q)* I can't quit<br>
+  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Quit".
+
+  _ _*Q)* Where did the name come from?<br>
+  _ _*A)* Vocito is "call" in Latin.
+
+ _ _*Q)* How do you pronounce Vocito?<br>
+  _ _*A)* Voe-kee-toe. According to most scholars, Latin speakers used a hard 'c' (sounds like an English 'k') as opposed to the soft 'c' (sounds like an English 'ch') used by Italians and the traditional Catholic Church. We decided to go with the hard 'c' to give us some street cred with all the Latin scholars out there.
