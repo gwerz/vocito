@@ -2,6 +2,7 @@
 #labels Featured,Phase-Support
 <wiki:toc max_depth="1" />
 
+Here's some initial documentation for Vocito.
 = Quick Intro =
 
   # Start up Vocito
@@ -14,7 +15,7 @@
 
 Other notes:
   * Clicking on the "Address Book" icon will open your Address Book and let you select numbers from there.
-  * The "From" Drop down menu is initially populated with your phone numbers as listed on your Address Book card.
+  * The "From" Drop down menu is initially populated with your phone numbers as listed on your Address Book card. It will save any other numbers you enter there.
   * Clicking on the "Gear" button will give you more options.
 
 Have fun!
@@ -27,7 +28,14 @@ Have fun!
   _ _*A)* Vocito requires an area code, because Grand Central requires an area code. Please add an area code to make it a 10 digit number.
 
   _ _*Q)* I logged out, and Vocito isn't in my menu bar anymore. How can I get it to stay there?<br>
-  _ _*A)* Add it to your startup items. Go to System Preferences, and choose the "Accounts" panel. Then choose the "Login Items" tab. Click on the "Plus" button at the bottom of the screen and select the Vocito application. More information about Startup items is [http://support.apple.com/kb/HT2602 here]
+  _ _*A)* Add it to your startup items. 
+      # Go to System Preferences, and choose the "Accounts" panel. 
+      # Choose the "Login Items" tab. 
+      # Click on the "Plus" button at the bottom of the screen and select the Vocito application.
+    More information about Startup items is [http://support.apple.com/kb/HT2602 here]
+
+  _ _*Q)* Where do I report bugs?<br>
+  _ _*A)* [http://code.google.com/p/vocito/issues/list Click Here.] Please verify that there isn't already a similar bug in the queue.
 
   _ _*Q)* I can't quit<br>
   _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Quit".
@@ -67,3 +75,23 @@ tell app "Vocito"
   dial "1234567890" from "9876543210"
 end tell
 }}}
+
+= Save As =
+Choosing "Save As" from the Gear menu allows you to save an applet that will dial the currently selected numbers in the "From" and "To" box.
+
+= Integrating With iCal =
+You can have Vocito automatically dial your phone for you at a certain time using iCal.
+  # Open the Vocito menu item and type in the number you want to dial into "Call" and the number you want to dial from in "From".
+  # Go to the Gear menu and "Save as Application".
+  # Go into iCal and create an appointment for the time you want the phones to be dialed.
+  # Edit the appointment and choose "Open File" from Alarm.
+  # Select the Application that you saved in step 2.
+
+Now when that time comes around, your phones will automatically be dialed for you. Great for auto-connecting into conference calls at a certain time.
+
+= "tel" URL support =
+Vocito also supports "tel" URLs, and will register itself as a handler for them. If you find a good use for this, please let me know. tel URLs look like this: 
+
+`tel:2501234567`
+
+and when clicked on, Vocito will dial that number from the last "From" number used.
