@@ -42,3 +42,9 @@ Vocito will call that number from the last number that Vocito dialed from (ie th
 
 You can also enter a number directly into Quicksilver for Vocito to dial by typing a period "." followed by a 10 digit number (area code + number).
 
+= Automator support =
+Vocito can also be used via Automator. The action is called "Call With Vocito".
+
+http://vocito.googlecode.com/svn/trunk/website/automator_ui.png
+
+The "Use Input" menu allows you to choose whether the data entering the action will be used for the "call number", the "from number" or ignored. The data will be passed through to the next action if appropriate.
