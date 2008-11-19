@@ -9,7 +9,7 @@
   # Click on the Vocito item and type in a phone number to call in the "Call" drop down and a phone number you want to receive the call at in the "From" drop down.
   # Click on the "Dial" Button
     * If this is the first time you have run Vocito you will now be prompted for your !GrandCentral ID, and your !GrandCentral password. These will be stored in your Keychain for future use.
-    * Assuming that your login information is entered correctly, Vocito will now dial both phones. When they are both answered, they will be connected together.
+    * Assuming that your login information is entered correctly, Vocito will now dial both phones. You will see progress text telling you what is happening scroll up in the menu bar. The phones should both start to ring momentarily. When they are both answered, they will be connected together.
 
 Other notes:
   * Clicking on the "Address Book" icon will open your Address Book and let you select numbers from there.
