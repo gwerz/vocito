@@ -1,5 +1,6 @@
 #summary Using Vocito
 #labels Featured,Phase-Support
+<wiki:toc max_depth="1" />
 
 = Quick Intro =
 
@@ -24,3 +25,20 @@ Have fun!
 
   _ _*Q)* I can't quit<br>
   _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Quit".
+
+= Address Book Support =
+Vocito installs an Address Book plugin. To use it, find a contact in Address Book and click on the label to the right of the phone number that you wish to call, and select the "Vocito Call" menu item.
+
+http://vocito.googlecode.com/svn/trunk/website/addressbook_ui.png
+
+Vocito will call that number from the last number that Vocito dialed from (ie the number that is showing in the "From" dropdown if you click on the Vocito menu item.
+
+= Quicksilver support =
+Vocito also installs a Quicksilver plugin. To use it, type in the name of your contact, select a phone number for them and choose the "Call using Vocito" action.
+
+http://vocito.googlecode.com/svn/trunk/website/quicksilver_ui.png
+
+Vocito will call that number from the last number that Vocito dialed from (ie the number that is showing in the "From" dropdown if you click on the Vocito menu item.
+
+You can also enter a number directly into Quicksilver for Vocito to dial by typing a period "." followed by a 10 digit number (area code + number).
+
