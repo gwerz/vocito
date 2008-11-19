@@ -8,7 +8,7 @@
     http://vocito.googlecode.com/svn/trunk/website/main_ui.png
   # Click on the Vocito item and type in a phone number to call in the "Call" drop down and a phone number you want to receive the call at in the "From" drop down.
   # Click on the "Dial" Button
-    * If this is the first time you have run Vocito you will now be prompted for your GrandCentral ID, and your GrandCentral password. These will be stored in your Keychain for future use.
+    * If this is the first time you have run Vocito you will now be prompted for your !GrandCentral ID, and your !GrandCentral password. These will be stored in your Keychain for future use.
     * Assuming that your login information is entered correctly, Vocito will now dial both phones. When they are both answered, they will be connected together.
 
 Other notes:
@@ -17,3 +17,10 @@ Other notes:
   * Clicking on the "Gear" button will give you more options.
 
 Have fun!
+
+= Trouble Shooting =
+  _ _*Q)* Vocito tells me that I have entered my login information incorrectly<br>
+  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Preferences" update your information with your correct login information. To get your login information, go to http://www.grandcentral.com and attempt to login there.
+
+  _ _*Q)* I can't quit<br>
+  _ _*A)* Go to the "Vocito" menu and open the window. Click on the "Gear" icon. Select "Quit".
