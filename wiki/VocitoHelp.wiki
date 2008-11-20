@@ -8,7 +8,8 @@ Here's some initial documentation for Vocito.
   # Start up Vocito
   # Note that you have a new menu item in the upper right hand corner of your screen.
     http://vocito.googlecode.com/svn/trunk/website/main_ui.png
-  # Click on the Vocito item and type in a phone number to call in the "Call" drop down and a phone number you want to receive the call at in the "From" drop down.
+  # Click on the Vocito item and type in a phone number to call in the "Call" drop down and a phone number you want to receive the call at in the "From" drop down. 
+    _ _*Do not use your !GrandCentral number for either your "To" or your "From" number. This will not work.*
   # Click on the "Dial" Button
     * If this is the first time you have run Vocito you will now be prompted for your !GrandCentral ID, and your !GrandCentral password. These will be stored in your Keychain for future use.
     * Assuming that your login information is entered correctly, Vocito will now dial both phones. You will see progress text telling you what is happening scroll up in the menu bar. The phones should both start to ring momentarily. When they are both answered, they will be connected together.
@@ -43,7 +44,7 @@ Vocito can also be used via Automator. The action is called "Call With Vocito".
 
 http://vocito.googlecode.com/svn/trunk/website/automator_ui.png
 
-The "Use Input" menu allows you to choose whether the data entering the action will be used for the "call number", the "from number" or ignored. The data will be passed through to the next action if appropriate.
+The "Use Input" menu allows you to choose whether the data entering the action will be used for the "call number", the "from number" or ignored. The data will be passed through to the next action if appropriate. The Automator action *does not* work on Tiger. This is due to binary incompatibilities introduced in Automator actions between Tiger and Leopard by Apple.
 
 = System Service support =
 Select a block of text in almost any application, and then go to the Services menu (under the current Application menu) and choose "Call with Vocito". Vocito will attempt to parse a phone number out of the selected text if possible. The number must be 10 digits (area code + number).
@@ -85,6 +86,12 @@ and when clicked on, Vocito will dial that number from the last "From" number us
   _ _*Q)* Vocito won't dial a 7 digit number<br>
   _ _*A)* Vocito requires an area code, because Grand Central requires an area code. Please add an area code to make it a 10 digit number.
 
+  _ _*Q)* Vocito appears to be dialing, but doesn't do anything<br>
+  _ _*A)* Please be sure that neither the "To" or the "From" number is your !GrandCentral number.
+
+  _ _*Q)* Vocito appears to be dialing, but doesn't do anything on Tiger<br>
+  _ _*A)* Vocito 1.0.1 had a bug on some Tiger machines. Version 1.1.0 and above fix it.
+
   _ _*Q)* I logged out, and Vocito isn't in my menu bar anymore. How can I get it to stay there?<br>
   _ _*A)* Add it to your startup items. 
       # Go to System Preferences, and choose the "Accounts" panel. 
@@ -103,6 +110,7 @@ and when clicked on, Vocito will dial that number from the last "From" number us
 
  _ _*Q)* How do you pronounce Vocito?<br>
  _ _*A)* Voe-kee-toe. According to most scholars, Latin speakers used a hard 'c' (sounds like an English 'k') as opposed to the soft 'c' (sounds like an English 'ch') used by Italians and the traditional Catholic Church. We decided to go with the hard 'c' to give us some street cred with all the Latin scholars out there.
+ _ _*A2)* I have been informed by many people that if I knew anything about Latin I would know that they pronounced 'v's as 'w's and that it should then by Woe-kee-toe. I'm sticking with the hard 'V' sound and the hard 'C' sound.
 
   _ _*Q)* How can I give input regarding this page to make it better?<br>
   _ _*A)* Add a comment below, or post to the [http://groups.google.com/group/vocito-discuss discussion group].
