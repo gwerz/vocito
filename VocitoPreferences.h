@@ -22,6 +22,7 @@
  @private
   IBOutlet NSTextField *username_;
   IBOutlet NSTextField *password_;
+  BOOL loginCheckDone_;
 }
 
 + (void)setUpPreferenceDefaults;

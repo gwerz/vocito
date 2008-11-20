@@ -33,11 +33,12 @@
   VocitoAppDelegate *delegate_;
   NSSize addressBookShownSize_;
   NSSize addressBookHiddenSize_;
-
+  NSCharacterSet *phoneNumberSet_;
 }
 - (id)initWithDelegate:(VocitoAppDelegate*)delegate;
 - (IBAction)dial:(id)sender;
 - (IBAction)toggleAddressBookView:(id)sender;
 - (IBAction)goToGrandCentral:(id)sender;
 - (IBAction)saveAsApplication:(id)sender;
+- (IBAction)checkForUpdates:(id)sender;
 @end

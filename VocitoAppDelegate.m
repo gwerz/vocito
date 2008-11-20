@@ -28,6 +28,16 @@
 #import "GTMDefines.h"
 #import "GTMGarbageCollection.h"
 
+@interface NSApplication (VocitoScriptExtensions)
+- (NSString*)fromNumber;
+- (void)setFromNumber:(NSString *)number;
+@end
+
+@interface VocitoAppDelegate (Private)
+- (void)showStartUpScreenIfNecessary;
+- (void)updateVersionString;
+@end
+
 @implementation VocitoAppDelegate
 - (id)init {
   if ((self = [super init])) {
@@ -36,10 +46,20 @@
   return self;
 }
 
+- (void)dealloc {
+  [statusItem_ release];
+  [dialerWindowController_ release];
+  [dialerController_ release];
+  [speechRecognizer_ release];
+  [versionString_ release];
+  [startUpWindowController_ release];
+  [super dealloc];
+}
+
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
   [VocitoPreferences setUpPreferenceDefaults];
   NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
-  statusItem_ = [[statusBar statusItemWithLength:GetMBarHeight()] retain];
+  statusItem_ = [[statusBar statusItemWithLength:24] retain];
   StatusItemView *view 
     = [[[StatusItemView alloc] initWithStatusItem:statusItem_] autorelease];
   [view setImage:[NSImage imageNamed:@"Vocito.pdf"]];
@@ -47,6 +67,7 @@
   [view setAction:@selector(showDialerWindow:)];
   [view setTarget:self];
   [statusItem_ setView:view];
+  //[statusItem_ setLength:];
 }
 
 - (BOOL)createPath:(NSString*)path {
@@ -107,14 +128,14 @@
   int installedVersion = [VocitoPreferences installedPluginVersion];
   int currentVersion = [VocitoPreferences currentPluginVersion];
   BOOL needUpdate = installedVersion < currentVersion ? YES : NO;
+  NSBundle *mainBundle = [NSBundle mainBundle];
   if (needUpdate) {
     NSString *abScriptPath 
-      = [[NSBundle mainBundle] pathForResource:@"VocitoAddressBookAction"
-                                        ofType:@"scpt"
-                                   inDirectory:@"Scripts"];
+      = [mainBundle pathForResource:@"VocitoAddressBookAction"
+                             ofType:@"scpt"
+                        inDirectory:@"Scripts"];
     NSString *qsScriptPath 
-      = [[NSBundle mainBundle] pathForResource:@"Vocito Module"
-                                        ofType:@"qsplugin"];
+      = [mainBundle pathForResource:@"Vocito Module" ofType:@"qsplugin"];
     if (!abScriptPath || !qsScriptPath) return;
     NSString *abString = @"Address Book Plug-Ins/VocitoAddressBookAction.scpt";
     BOOL goodCopy = [self updatePathInLibrary:abString
@@ -143,17 +164,13 @@
       [VocitoPreferences updateInstalledPluginVersion];
     }
   }
+  [self showStartUpScreenIfNecessary];
+  [self updateVersionString];
 }
 
-- (void)dealloc {
-  [statusItem_ release];
-  [dialerWindowController_ release];
-  [dialerController_ release];
-  [speechRecognizer_ release];
-  [super dealloc];
-}
-
-- (IBAction)showDialerWindow:(id)sender {  
+- (IBAction)showDialerWindow:(id)sender { 
+  [startUpWindowController_ autorelease];
+  startUpWindowController_ = nil;
   if ([[dialerWindowController_ window] isKeyWindow]) {
     [dialerWindowController_ close];
   } else {
@@ -201,4 +218,35 @@
   return dialerController_;
 }
 
+- (void)showStartUpScreenIfNecessary {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  BOOL launchedBefore = [defaults boolForKey:@"LaunchedBefore"];
+  if (!launchedBefore) {
+    [(StatusItemView *)[statusItem_ view] startPulsing];
+    startUpWindowController_ 
+      = [[NSWindowController alloc] initWithWindowNibName:@"StartupScreen"];
+    [[startUpWindowController_ window] makeKeyAndOrderFront:self];
+    [defaults setBool:YES forKey:@"LaunchedBefore"];
+    [defaults synchronize];
+  }
+}
+
+- (void)updateVersionString {
+  NSBundle *mainBundle = [NSBundle mainBundle];
+  [self willChangeValueForKey:@"versionString_"];
+  NSString *key = @"CFBundleShortVersionString";
+  versionString_ = [[mainBundle objectForInfoDictionaryKey:key] retain];
+  [self didChangeValueForKey:@"versionString_"];
+}
+
+@end
+
+@implementation NSApplication (VocitoScriptExtensions)
+- (NSString*)fromNumber {
+  return [VocitoPreferences currentFromNumber];
+}
+
+- (void)setFromNumber:(NSString *)number {
+  [VocitoPreferences updateRecentlyDialledFromNumbers:number];
+}
 @end

@@ -33,6 +33,9 @@
   float animationLength_;
   float originalLength_;
   NSImage *animationImage_;
+  BOOL isPulsing_;
+  float pulseAlpha_;
+  BOOL pulseDarken_;
 }
 - (id)initWithStatusItem:(NSStatusItem*)item;
 - (void)setImage:(NSImage*)image;
@@ -42,4 +45,5 @@
 - (void)setSelected:(BOOL)selected;
 - (void)animateText:(NSString*)text;
 - (void)stopAnimation:(id)sender;
+- (void)startPulsing;
 @end
