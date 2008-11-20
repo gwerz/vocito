@@ -63,31 +63,14 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
   NSString *username = [username_ stringValue];
   NSString *password = [password_ stringValue];
   
-  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-  [ud setObject:username forKey:UserNamePreferenceKey];
+  Vocito *dialer = [[Vocito alloc] initWithDelegate:self];
+  [dialer verifyName:username password:password];
+  NSRunLoop *loop = [NSRunLoop currentRunLoop];
+  loginCheckDone_ = NO;
   
-  if (username && password) {
-    EMKeychainProxy *keychain = [EMKeychainProxy sharedProxy];
-    NSString *server = [Vocito serverName];
-    EMInternetKeychainItem *keychainItem 
-      = [keychain internetKeychainItemForServer:server
-                                   withUsername:username
-                                           path:@""
-                                           port:0
-                                       protocol:kSecProtocolTypeHTTPS];
-    if (!keychainItem) {
-      [keychain addInternetKeychainItemForServer:server
-                                    withUsername:username
-                                        password:password
-                                            path:@""
-                                            port:0
-                                        protocol:kSecProtocolTypeHTTPS];
-    } else {
-      [keychainItem setUsername:username];
-      [keychainItem setPassword:password];
-    }
+  while (!loginCheckDone_) {
+    [loop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
   }
-  [NSApp stopModal];
 }
 
 - (IBAction)cancel:(id)sender {
@@ -116,6 +99,7 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
   ABAddressBook *addressBook = [ABAddressBook sharedAddressBook];
   ABPerson *me = [addressBook me];
   NSMutableArray *array = [NSMutableArray array];
+  NSString *fromNumber = nil;
   if (me) {
     ABMultiValue *phones = [me valueForProperty:kABPhoneProperty];
     unsigned count = [phones count];
@@ -132,6 +116,7 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
         if (value) {
           [array removeObject:value];
           [array addObject:value];
+          fromNumber = value;
         }
       }
     }
@@ -140,6 +125,7 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
   NSDictionary *registrationDictionary 
     = [NSDictionary dictionaryWithObjectsAndKeys:
        array, RecentlyDialledFromNumbersKey,
+       fromNumber, LastDialledFromNumberKey,
        nil];
   [ud registerDefaults:registrationDictionary];
 }
@@ -203,4 +189,50 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
   }
   return finalVersion;
 }
+
+- (void)dialerDidLogin:(Vocito *)dialer {
+  [dialer autorelease];
+  loginCheckDone_ = YES;
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  NSString *username = [username_ stringValue];
+  NSString *password = [password_ stringValue];
+  [ud setObject:username forKey:UserNamePreferenceKey];
+  
+  if (username && password) {
+    EMKeychainProxy *keychain = [EMKeychainProxy sharedProxy];
+    NSString *server = [Vocito serverName];
+    EMInternetKeychainItem *keychainItem 
+    = [keychain internetKeychainItemForServer:server
+                                 withUsername:username
+                                         path:@""
+                                         port:0
+                                     protocol:kSecProtocolTypeHTTPS];
+    if (!keychainItem) {
+      [keychain addInternetKeychainItemForServer:server
+                                    withUsername:username
+                                        password:password
+                                            path:@""
+                                            port:0
+                                        protocol:kSecProtocolTypeHTTPS];
+    } else {
+      [keychainItem setUsername:username];
+      [keychainItem setPassword:password];
+    }
+  }
+  [NSApp stopModal];
+}
+
+- (void)dialer:(Vocito *)dialer didFailWithError:(NSError *)error {
+  [dialer autorelease];
+  loginCheckDone_ = YES;
+  NSString *message = NSLocalizedString(@"Invalid username and/or password.", nil);
+  NSAlert *alert = [NSAlert alertWithMessageText:message
+                                   defaultButton:nil 
+                                 alternateButton:nil 
+                                     otherButton:nil 
+                       informativeTextWithFormat:[error localizedDescription]];
+  [NSApp activateIgnoringOtherApps:YES];
+  [alert runModal];
+}
+  
 @end

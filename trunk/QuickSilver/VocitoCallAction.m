@@ -40,15 +40,17 @@
 
 - (void)call:(QSObject *)inObject {
   NSString *number = [self phoneNumberFromQSObject:inObject];
-  NSString *scriptSource
-  = [NSString stringWithFormat:@"tell application id \"com.google.vocito\" "
-     @"to dial \"%@\"", number];
-  NSDictionary *error = nil;
-  NSAppleScript *script 
-    = [[[NSAppleScript alloc] initWithSource:scriptSource] autorelease];
-  [script executeAndReturnError:&error];
-  if (error) {
-    NSLog(@"Vocito QS Plugin Error: %@", error);
+  if (number) {
+    NSString *scriptSource
+      = [NSString stringWithFormat:@"tell application \"Vocito\" to dial \"%@\"", 
+         number];
+    NSDictionary *error = nil;
+    NSAppleScript *script 
+      = [[[NSAppleScript alloc] initWithSource:scriptSource] autorelease];
+    [script executeAndReturnError:&error];
+    if (error) {
+      NSLog(@"Vocito QS Plugin Error: %@", error);
+    }
   }
 }
 
@@ -84,6 +86,9 @@
       number = [multiValue valueAtIndex:index];
     }
   }
+  if (!number) {
+    number = [NSString string];
+  }
   return number;
 }
 @end
@@ -96,7 +101,9 @@
   if (string) {
     number = [string vocito_cleanPhoneNumber];
   }
-  NSLog(@"Got %@", number);
+  if (!number) {
+    number = [NSString string];
+  }  
   return number;
 }
 @end

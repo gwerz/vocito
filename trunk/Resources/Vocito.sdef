@@ -16,13 +16,30 @@
 -->
 
 <dictionary title="Vocito Terminology">
-	<suite name="Vocito Suite" code="Voci" description="Commands for Vocito.">
-     <command name="dial" code="Vocicall" description="Dial a phone number with Vocito">
-			<cocoa class="VocitoDialCommand"/>
-			<direct-parameter type="text" description="The number to call."/>
-			<parameter name="from" code="from" type="text" description="The number to dial from." optional="yes">
-				<cocoa key="From"/>
-			</parameter>
-      </command>
-	</suite>
+  <suite name="Vocito Suite" code="Voci" description="Commands for Vocito.">
+    <class name="application" code="capp" description="The application's top-level scripting object.">
+      <cocoa class="NSApplication"/>
+      <property name="name" code="pnam" type="text" access="r" description="The name of the application."/>
+      <property name="frontmost" code="pisf" type="boolean" access="r" description="Is this the active application?">
+        <cocoa key="isActive"/>
+      </property>
+      <property name="version" code="vers" type="text" access="r" description="The version number of the application."/>
+      <property name="from number" code="From" type="text" description="The number last dialed from." />
+      <responds-to name="quit" command="quit">
+        <cocoa method="handleQuitScriptCommand:"/>
+      </responds-to>
+    </class>
+
+    <command name="quit" code="aevtquit" description="Quit the application.">
+      <cocoa class="NSQuitCommand"/>
+    </command>
+
+    <command name="dial" code="Vocicall" description="Dial a phone number with Vocito">
+      <cocoa class="VocitoDialCommand" />
+      <direct-parameter type="text" description="The number to call." />
+      <parameter name="from" code="from" type="text" description="The number to dial from." optional="yes">
+        <cocoa key="From" />
+      </parameter>
+    </command>
+  </suite>
 </dictionary>

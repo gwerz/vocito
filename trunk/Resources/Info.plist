@@ -21,9 +21,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>${VOCITO_VERSION}</string>
+	<key>CFBundleShortVersionString</key>
+	<string>${VOCITO_VERSION}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Vocito 1.0.1 © 2008 Google Inc.</string>
+	<string>Vocito ${VOCITO_VERSION} © 2008 Google Inc.</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.4.0</string>
 	<key>LSUIElement</key>
@@ -55,7 +57,7 @@
 	<key>OSAScriptingDefinition</key>
 	<string>Vocito.sdef</string>
 	<key>SUFeedURL</key>
-	<string>http://vocito.googlecode.com/svn/trunk/installer/VocitoAppcast.xml</string>
+	<string>${VOCITO_APPCASTURL}</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUScheduledCheckInterval</key>

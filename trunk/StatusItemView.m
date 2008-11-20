@@ -18,6 +18,7 @@
 
 #import "StatusItemView.h"
 #import <Carbon/Carbon.h>
+#import "GTMNSBezierPath+RoundRect.h"
 
 @implementation StatusItemView
 
@@ -38,6 +39,13 @@
 - (void)drawRect:(NSRect)rect {
   NSRect bounds = [self bounds];
   [statusItem_ drawStatusBarBackgroundInRect:bounds withHighlight:selected_];
+  if (isPulsing_) {
+    NSColor *color = [[NSColor alternateSelectedControlColor] colorWithAlphaComponent:pulseAlpha_];
+    [color setFill];
+    bounds.origin.y += 1;
+    NSBezierPath *path = [NSBezierPath gtm_bezierPathWithRoundRect:bounds cornerRadius:4];
+    [path fill];
+  }
   if (animationImage_) {
     NSSize animateSize = [animationImage_ size];
     
@@ -77,6 +85,13 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
+  if (isPulsing_) {
+    isPulsing_ = NO;
+    [animationTimer_ invalidate];
+    [animationTimer_ release];
+    animationTimer_ = nil;
+    [self setNeedsDisplay:YES];
+  }
   [target_ performSelector:action_ withObject:self];
 }
 
@@ -95,7 +110,7 @@
   }
 }
     
-- (void)updateDrawing:(NSTimer*)timer {
+- (void)updateTextDrawing:(NSTimer*)timer {
   [self setNeedsDisplay:YES];
   float offset = 3;
   animationOffset_ += offset;
@@ -114,7 +129,7 @@
   animationTimer_ 
     = [[NSTimer scheduledTimerWithTimeInterval:1.0/24.0
                                         target:self 
-                                      selector:@selector(updateDrawing:)
+                                      selector:@selector(updateTextDrawing:)
                                       userInfo:nil
                                        repeats:YES] retain];
   animationOffset_ = 0;
@@ -163,5 +178,28 @@
   [animationTimer_ release];
   animationTimer_ = nil;
   [self setNeedsDisplay:YES];
+}
+
+- (void)updatePulse:(id)sender {
+  float offset = 1.0/30.0;
+  if (!pulseDarken_) {
+    offset = -offset;
+  }
+  pulseAlpha_ += offset;
+  if (pulseAlpha_ < 0 || pulseAlpha_ > 1.0) {
+    pulseDarken_ = !pulseDarken_;
+  }
+  [self setNeedsDisplay:YES];
+}
+
+- (void)startPulsing {
+  isPulsing_ = YES;
+  pulseAlpha_ = 0.0;
+  pulseDarken_ = YES;
+  animationTimer_ = [[NSTimer scheduledTimerWithTimeInterval:1.0/60.0
+                                                      target:self 
+                                                    selector:@selector(updatePulse:)
+                                                    userInfo:nil
+                                                     repeats:YES] retain];
 }
 @end

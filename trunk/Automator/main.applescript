@@ -37,7 +37,7 @@ on run {input, parameters}
 			set fromNumber to theNumber
 		end if
 	end if
-	tell application id "com.google.Vocito"
+	tell application "Vocito"
 		if length of fromNumber > 0 then
 			dial toNumber from fromNumber
 		else

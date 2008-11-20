@@ -28,18 +28,18 @@ enum {
 @interface Vocito : NSObject {
  @private
   id delegate_;
-  NSString *username_;
   NSString *toPhoneNumber_;
   NSString *fromPhoneNumber_;
 }
 
 + (NSString*)serverName;
-- (id)initWithUser:(NSString*)user
-          delegate:(id)delegate;
-- (void)callPhone:(NSString*)toPhoneNumber 
-        fromPhone:(NSString*)fromPhoneNumber;
-- (NSString*)toPhoneNumber;
-- (NSString*)fromPhoneNumber;
+- (id)initWithDelegate:(id)delegate;
+- (void)verifyName:(NSString *)name password:(NSString *)password;
+- (void)callPhone:(NSString *)toPhoneNumber 
+        fromPhone:(NSString *)fromPhoneNumber
+          forUser:(NSString *)username;
+- (NSString *)toPhoneNumber;
+- (NSString *)fromPhoneNumber;
 @end
 
 @interface NSObject (VocitoDelegate)

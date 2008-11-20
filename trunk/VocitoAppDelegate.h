@@ -26,8 +26,10 @@
  @private
   NSStatusItem *statusItem_; 
   VocitoWindowController *dialerWindowController_;
+  NSWindowController *startUpWindowController_;
   VocitoController *dialerController_;
   GTMSpeechRecognizer *speechRecognizer_;
+  NSString *versionString_;
 }
 - (NSPoint)rightOfStatusItem;
 - (NSStatusItem*)statusItem;

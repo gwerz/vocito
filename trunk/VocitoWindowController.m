@@ -17,6 +17,7 @@
 //
 
 #import <AddressBook/AddressBook.h>
+#import <Sparkle/Sparkle.h>
 
 #import "VocitoWindowController.h"
 #import "VocitoAppDelegate.h"
@@ -35,6 +36,9 @@
 - (id)initWithDelegate:(VocitoAppDelegate *)inDelegate  {
   if ((self = [super initWithWindowNibName:@"Dialer"])) {
     delegate_ = inDelegate;
+    phoneNumberSet_
+      = [NSCharacterSet characterSetWithCharactersInString:@"0123456789().- #*"];
+    phoneNumberSet_ = [[phoneNumberSet_ invertedSet] retain];
   }
   return self;
 }
@@ -44,6 +48,7 @@
   [nc removeObserver:self];
   [selectedRecord_ release];
   [selectedIdentifier_ release];
+  [phoneNumberSet_ release];
   [super dealloc];
 }
 
@@ -53,7 +58,7 @@
   [window setOpaque:NO];
   
   [window setBackgroundColor:[NSColor colorWithDeviceWhite:1.0f 
-                                                            alpha:0.85f]];
+                                                     alpha:0.85f]];
   addressBookHiddenSize_ = [window frame].size;
   
   NSRect addressBookBounds = [addressBook_ bounds];
@@ -69,14 +74,15 @@
     // Red'q for bug in Tiger
     // http://developer.apple.com/documentation/Cocoa/Conceptual/SegmentedControl/Articles/SegmentedControlCode.html#//apple_ref/doc/uid/20002250-129646
     [gearControl_ setLabel:nil forSegment:0];
+  } else {
+    [gearControl_ setImage:[NSImage imageNamed:NSImageNameActionTemplate]
+                forSegment:0];
   }
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
   [nc addObserver:self
          selector:@selector(pickerSelectionChanged:) 
              name:ABPeoplePickerValueSelectionDidChangeNotification 
            object:addressBook_];
-  
-  
 }
 
 - (NSRect)updateWindowFrame {
@@ -115,7 +121,6 @@
                                      error:nil];
   [[self window] close];
 }
-
 
 - (IBAction)toggleAddressBookView:(id)sender {
   NSWindow *window = [self window];
@@ -199,7 +204,7 @@
   NSFileManager *fm = [NSFileManager defaultManager];
   NSString *errorString = nil;
   NSString *scriptString = [NSString stringWithFormat:
-                            @"tell application id \"com.google.Vocito\""
+                            @"tell application \"Vocito\""
                             @"to dial \"%@\" from \"%@\"",
                             [toNumber_ stringValue], [fromNumber_ stringValue]];
   NSAppleScript *script 
@@ -278,5 +283,30 @@
                        informativeTextWithFormat:errorString];
   [NSApp activateIgnoringOtherApps:YES];
   [alert runModal];
+}
+
+- (IBAction)checkForUpdates:(id)sender {
+  [[SUUpdater sharedUpdater] checkForUpdates:sender];
+}
+
+- (void)controlTextDidChange:(NSNotification *)notification {
+  if ([[notification object] isEqual:toNumber_]) {
+    NSString *number = [toNumber_ stringValue];
+    NSWindow *window = [self window];
+    NSRange badCharRange = [number rangeOfCharacterFromSet:phoneNumberSet_];
+    if (badCharRange.location != NSNotFound) {
+      if ([addressBook_ isHidden]) {
+        [self toggleAddressBookView:self];
+      } else {
+        [window selectKeyViewFollowingView:fromNumber_];
+      }
+      NSSearchField *view = (NSSearchField*)[fromNumber_ nextValidKeyView];
+      [view setStringValue:number];
+      NSText *text = [window fieldEditor:YES forObject:view];
+      [text setSelectedRange:NSMakeRange([number length], 0)];
+      [toNumber_ setStringValue:@""];
+      [[view target] performSelector:[view action] withObject:self];
+    }
+  }
 }
 @end

@@ -48,8 +48,7 @@
   NSString *username = [VocitoPreferences username];
   if (!username) return;
   
-  Vocito *dialer = [[Vocito alloc] initWithUser:username
-                                       delegate:self];
+  Vocito *dialer = [[Vocito alloc] initWithDelegate:(id)self];
   if (!fromPhoneNumber) {
     fromPhoneNumber = [VocitoPreferences currentFromNumber];
   }
@@ -62,7 +61,7 @@
     [(StatusItemView*)[[delegate_ statusItem] view] stopAnimation:nil];
   }
   [(StatusItemView*)[[delegate_ statusItem] view] animateText:statusText];
-  [dialer callPhone:toPhoneNumber fromPhone:fromPhoneNumber];  
+  [dialer callPhone:toPhoneNumber fromPhone:fromPhoneNumber forUser:username];  
   
   if (!error_ && waitingUntilDone_) {
     NSRunLoop *loop = [NSRunLoop currentRunLoop];

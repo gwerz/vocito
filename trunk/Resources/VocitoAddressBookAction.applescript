@@ -32,7 +32,7 @@ using terms from application "Address Book"
 	on perform action for aPerson with aNumber
 		set aNumber to (value of aNumber as string)
 		using terms from application "Vocito"
-			tell application id "com.google.Vocito"
+			tell application "Vocito"
 				dial aNumber
 			end tell
 		end using terms from

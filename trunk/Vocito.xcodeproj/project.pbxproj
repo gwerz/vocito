@@ -50,6 +50,8 @@
 		8B6B74340E64B467000E4ADF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6B74330E64B467000E4ADF /* Security.framework */; };
 		8B6B749E0E64B827000E4ADF /* Dialer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B749D0E64B827000E4ADF /* Dialer.xib */; };
 		8B6B74C40E64BE5B000E4ADF /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B74C20E64BE5B000E4ADF /* StatusItemView.m */; };
+		8B84B8150ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B84B8140ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.m */; };
+		8B84B86A0ED4F407003D9F0F /* StartupScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B84B8690ED4F407003D9F0F /* StartupScreen.xib */; };
 		8B90DB9E0E80057900252773 /* GTMObjC2Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B90DB9C0E80057900252773 /* GTMObjC2Runtime.m */; };
 		8BBB68D80E97B2A5008A9B44 /* NSString+PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB68D70E97B2A5008A9B44 /* NSString+PhoneNumber.m */; };
 		8BBB69370E98030F008A9B44 /* Vocito Module.qsplugin in Resources */ = {isa = PBXBuildFile; fileRef = 8BBB69000E98002A008A9B44 /* Vocito Module.qsplugin */; };
@@ -173,6 +175,11 @@
 		8B6B749D0E64B827000E4ADF /* Dialer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Dialer.xib; sourceTree = "<group>"; };
 		8B6B74C20E64BE5B000E4ADF /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
 		8B6B74C30E64BE5B000E4ADF /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
+		8B84B7320ED4DD18003D9F0F /* releaseNotes_1_1_0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseNotes_1_1_0.txt; sourceTree = "<group>"; };
+		8B84B7330ED4DD23003D9F0F /* releaseNotes_1_0_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseNotes_1_0_1.txt; sourceTree = "<group>"; };
+		8B84B8130ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSBezierPath+RoundRect.h"; sourceTree = "<group>"; };
+		8B84B8140ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSBezierPath+RoundRect.m"; sourceTree = "<group>"; };
+		8B84B8690ED4F407003D9F0F /* StartupScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartupScreen.xib; sourceTree = "<group>"; };
 		8B90DB420E80039A00252773 /* DebugTigerOrLater.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugTigerOrLater.xcconfig; sourceTree = "<group>"; };
 		8B90DB470E80039A00252773 /* ReleaseTigerOrLater.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ReleaseTigerOrLater.xcconfig; sourceTree = "<group>"; };
 		8B90DB9C0E80057900252773 /* GTMObjC2Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMObjC2Runtime.m; sourceTree = "<group>"; };
@@ -301,6 +308,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B84B8690ED4F407003D9F0F /* StartupScreen.xib */,
 				8BD1EC450E6992A700384FC3 /* VocitoAddressBookAction.applescript */,
 				8B6439070E65F1230098096B /* AddressBook.png */,
 				8B6437970E65CDEC0098096B /* Vocito.icns */,
@@ -430,6 +438,8 @@
 			isa = PBXGroup;
 			children = (
 				8BDA35EE0ED2268B0051CE98 /* releaseNotes_1_0_0.txt */,
+				8B84B7330ED4DD23003D9F0F /* releaseNotes_1_0_1.txt */,
+				8B84B7320ED4DD18003D9F0F /* releaseNotes_1_1_0.txt */,
 				8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */,
 			);
 			path = installer;
@@ -438,6 +448,8 @@
 		8BDF62090ECFF35B006AF1EF /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				8B84B8130ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.h */,
+				8B84B8140ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.m */,
 				8BDF620A0ECFF371006AF1EF /* GTMGetURLHandler.m */,
 			);
 			path = AppKit;
@@ -532,6 +544,7 @@
 				8BE846650E930C2300C611B0 /* VocitoInvert.pdf in Resources */,
 				8BDA35590ED217F60051CE98 /* dsa_pub.pem in Resources */,
 				8BDA35EF0ED2268B0051CE98 /* releaseNotes_1_0_0.txt in Resources */,
+				8B84B86A0ED4F407003D9F0F /* StartupScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +596,7 @@
 				8BBB68D80E97B2A5008A9B44 /* NSString+PhoneNumber.m in Sources */,
 				8BDF620B0ECFF371006AF1EF /* GTMGetURLHandler.m in Sources */,
 				8BDF622D0ECFF3FB006AF1EF /* VocitoTelURLHandler.m in Sources */,
+				8B84B8150ED4EE33003D9F0F /* GTMNSBezierPath+RoundRect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +638,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=macosx10.5*]" = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/externals\"",
@@ -631,13 +646,18 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vocito_Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				PRODUCT_NAME = Vocito;
+				SDKROOT = macosx10.5;
+				VOCITO_APPCASTURL = "http://vocito.googlecode.com/svn/trunk/installer/VocitoAppcast.xml";
+				VOCITO_VERSION = 1.1.0;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=macosx10.5*]" = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/externals\"",
@@ -645,7 +665,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Vocito_Prefix.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				PRODUCT_NAME = Vocito;
+				SDKROOT = macosx10.5;
+				VOCITO_APPCASTURL = "http://vocito.googlecode.com/svn/trunk/installer/VocitoAppcast.xml";
+				VOCITO_VERSION = 1.1.0;
 			};
 			name = Release;
 		};

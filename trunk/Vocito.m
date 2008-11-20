@@ -23,10 +23,16 @@
 
 static NSString *const kServer = @"www.grandcentral.com";
 static NSString *const kProtocol = @"https";
+static NSString *const kLoginString 
+  = @"%@://%@/account/login?account[username]=%@&account[password]=%@";
+static NSString *const kDialString
+  = @"%@://%@/calls/send_call_request?a_t=%@&calltype=call&destno=%@&ani=%@";
 NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
 
 @interface Vocito (VocitoPrivate)
 - (void)logError:(NSError *)error;
+- (NSString *)passwordForName:(NSString *)name;
+- (void)initiateLoginWithName:(NSString *)name password:(NSString*)password;
 @end
 
 @interface VocitoURLConnectionDelegate : NSObject {
@@ -121,6 +127,14 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
   [self autorelease];
 }
 
+-(NSURLRequest *)connection:(NSURLConnection *)connection
+            willSendRequest:(NSURLRequest *)request
+           redirectResponse:(NSURLResponse *)redirectResponse {
+  NSMutableURLRequest *newRequest = [[request mutableCopy] autorelease];
+  [newRequest setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+  return newRequest;
+}
+
 @end
 
 @implementation VocitoLogin
@@ -132,22 +146,21 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
     if ([delegate_ respondsToSelector:@selector(dialerDidLogin:)]) {
       [delegate_ dialerDidLogin:dialer_];
     }
-    
-    NSString *urlString 
-      = [NSString stringWithFormat:
-         @"%@://%@/calls/send_call_request?a_t=%@&calltype=call&destno=%@&ani=%@", 
-         kProtocol, kServer, atValue, 
-         [dialer_ toPhoneNumber], [dialer_ fromPhoneNumber]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request 
-      = [NSURLRequest requestWithURL:url
-                         cachePolicy:NSURLRequestReloadIgnoringCacheData
-                     timeoutInterval:30];
-    VocitoConnect *conn 
-      = [[VocitoConnect alloc] initWithDialer:dialer_ 
-                                                 url:url
-                                            delegate:delegate_];
-    [NSURLConnection connectionWithRequest:request delegate:conn];
+    if ([dialer_ toPhoneNumber] && [dialer_ fromPhoneNumber]) {
+      NSString *urlString 
+        = [NSString stringWithFormat:kDialString, kProtocol, kServer, atValue, 
+           [dialer_ toPhoneNumber], [dialer_ fromPhoneNumber]];
+      NSURL *url = [NSURL URLWithString:urlString];
+      NSURLRequest *request 
+        = [NSURLRequest requestWithURL:url
+                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+                       timeoutInterval:30];
+      VocitoConnect *conn 
+        = [[VocitoConnect alloc] initWithDialer:dialer_ 
+                                                   url:url
+                                              delegate:delegate_];
+      [[NSURLConnection connectionWithRequest:request delegate:conn] retain];
+    }
   } else {
     NSLog(@"Error: %@", source_);
     NSString *invalidPassword 
@@ -162,6 +175,7 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
     [dialer_ logError:error];
   }
   [self autorelease];
+  [connection autorelease];
 }
 
 @end
@@ -173,25 +187,19 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
   }
   [self deleteLoginCookie];
   [self autorelease];
+  [connection autorelease];
 }
 @end
 
 @implementation Vocito : NSObject
-- (id)initWithUser:(NSString*)user
-          delegate:(id)delegate { 
+- (id)initWithDelegate:(id)delegate { 
   if ((self = [super init])) {
     delegate_ = delegate;
-    username_ = [user retain];
-    if (!username_) {
-      [self release];
-      self = nil;
-    }
   }
   return self;
 }
 
 - (void)dealloc {
-  [username_ release];
   [toPhoneNumber_ release];
   [fromPhoneNumber_ release];
   [super dealloc];
@@ -201,16 +209,16 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
   return kServer;
 }
 
-- (void)callPhone:(NSString*)toPhoneNumber 
-        fromPhone:(NSString*)fromPhoneNumber {
-  EMKeychainProxy *keychain = [EMKeychainProxy sharedProxy];
-  EMInternetKeychainItem *keychainItem 
-    = [keychain internetKeychainItemForServer:kServer
-                                 withUsername:username_
-                                         path:@""
-                                         port:0
-                                     protocol:kSecProtocolTypeHTTPS];
-  if (!keychainItem) {
+- (void)verifyName:(NSString *)name password:(NSString*)password {
+  [self initiateLoginWithName:name
+                     password:password];
+}
+
+- (void)callPhone:(NSString *)toPhoneNumber 
+        fromPhone:(NSString *)fromPhoneNumber
+          forUser:(NSString *)username {
+  NSString *password = [self passwordForName:username];
+  if (!password) {
     NSString *invalidPassword = NSLocalizedString(@"Invalid Password. Please set"
                                                   @" your user name and password"
                                                   @" in the preferences.", nil);
@@ -242,7 +250,6 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
     return;
   }
   
-    
   fromPhoneNumber_ = [[fromPhoneNumber vocito_cleanPhoneNumber] retain];
   if (!fromPhoneNumber_) {
     NSString *errorFormat 
@@ -260,25 +267,7 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
                                    userInfo:userInfo]];
     return;
   }
-  
-  NSString *cleanUserName 
-    = [[keychainItem username] gtm_stringByEscapingForURLArgument];
-  NSString *cleanPassword 
-    = [[keychainItem password] gtm_stringByEscapingForURLArgument];
-  NSString *urlString 
-    = [NSString stringWithFormat:
-       @"%@://%@/account/login?account[username]=%@&account[password]=%@", 
-       kProtocol, kServer, cleanUserName, cleanPassword];
-  NSURL *url = [NSURL URLWithString:urlString];
-  NSMutableURLRequest *loginRequest 
-    = [NSMutableURLRequest requestWithURL:url
-                              cachePolicy:NSURLRequestReloadIgnoringCacheData
-                          timeoutInterval:30];
-  [loginRequest setHTTPMethod:@"POST"];
-  VocitoLogin *conn = [[VocitoLogin alloc] initWithDialer:self
-                                                      url:url
-                                                 delegate:delegate_];
-  [NSURLConnection connectionWithRequest:loginRequest delegate:conn];
+  [self initiateLoginWithName:username password:password];
 }
 
 - (NSString*)toPhoneNumber {
@@ -297,5 +286,41 @@ NSString *const VocitoErrorDomain = @"VocitoErrorDomain";
     [delegate_ dialer:self didFailWithError:error];
   }  
 }
+
+- (NSString *)passwordForName:(NSString *)name {
+  NSString *password = nil;
+  EMKeychainProxy *keychain = [EMKeychainProxy sharedProxy];
+  EMInternetKeychainItem *keychainItem 
+    = [keychain internetKeychainItemForServer:kServer
+                                 withUsername:name
+                                       path:@""
+                                         port:0
+                                     protocol:kSecProtocolTypeHTTPS];
+  
+  if (keychainItem) {
+    password = [keychainItem password];
+  }
+  return password;
+}
+
+- (void)initiateLoginWithName:(NSString *)name
+                     password:(NSString*)password {
+  NSString *cleanUserName = [name gtm_stringByEscapingForURLArgument];
+  NSString *cleanPassword = [password gtm_stringByEscapingForURLArgument];
+  
+  NSString *urlString = [NSString stringWithFormat:kLoginString, kProtocol, 
+                         kServer, cleanUserName, cleanPassword];
+  NSURL *url = [NSURL URLWithString:urlString];
+  NSMutableURLRequest *loginRequest 
+  = [NSMutableURLRequest requestWithURL:url
+                            cachePolicy:NSURLRequestReloadIgnoringCacheData
+                        timeoutInterval:30];
+  [loginRequest setHTTPMethod:@"POST"];
+  VocitoLogin *conn = [[VocitoLogin alloc] initWithDialer:self
+                                                      url:url
+                                                 delegate:delegate_];
+  [[NSURLConnection connectionWithRequest:loginRequest delegate:conn] retain];
+}
+
 @end
 
