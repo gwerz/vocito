@@ -6,10 +6,10 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
       <item>
-        <title>Version 1.0.1</title>
-        <sparkle:releaseNotesLink>http://vocito.googlecode.com/svn/trunk/installer/releaseNotes_1_0_1.txt</sparkle:releaseNotesLink>
-        <pubDate>Tue, 18 Nov 2008 13:39:00 -0800</pubDate>
-        <enclosure url="http://vocito.googlecode.com/files/Vocito_1.0.1.zip" sparkle:version="1.0.1" length="498988" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCfmQVI/0CalzU7yAQ/UMxerjQROQIUPTKDDMvUIjcoXhvA2GkQr7ovKZQ=" />
+        <title>Version 1.1.0</title>
+        <sparkle:releaseNotesLink>http://vocito.googlecode.com/svn/trunk/installer/releaseNotes_1_1_0.txt</sparkle:releaseNotesLink>
+        <pubDate>Tue, 21 Nov 2008 07:57:00 -0800</pubDate>
+        <enclosure url="http://vocito.googlecode.com/files/Vocito_1.1.0.zip" sparkle:version="1.1.0" length="512119" type="application/octet-stream" sparkle:dsaSignature="MCwCFD2dzWFd6MIh3UUC69DKwgvw28dXAhQt9hPgicRsSsIvloAgWnRvkD7O4A==" />
        </item>
 
    </channel>
