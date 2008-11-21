@@ -1,19 +1,27 @@
-1.0.1 - Fixes small activation bug at startup.
-
-1.1.0 - Fixes problem dialing on some Tiger systems.
+1.1.0   2008/11/21
+      - Fixes problem dialing on some Tiger systems.
       - Fixes problem with scripts on Tiger.
       - Gets rid of a spurious log message on Tiger.
-      - Adds startup screen for first time Vocito users 
-        and flashing menu bar icon.
+      - Adds startup screen for first time Vocito 
+        users and flashing menu bar icon.
       - Increases the icon size in the menu bar.
-      - Fixes Quicksilver script so that it doesn't crash if "from" was empty
+      - Fixes Quicksilver script so that it doesn't 
+        crash if "from" was empty
       - Added "Check For Updates" menu item.
-      - Typing a non-phone number character into the "to" field automatically
-        starts searching your contacts.
-      - Automatically fills in your "From" at startup with your default number
-        on your "me" card.
-      - Now does name/password checks when you set your preferences.
-      - Added a version number in the lower left of the preferences field.
-      - Added a "from number" AppleScript property so you can set your from
-        number via scripting without actually having to dial.
+      - Typing a non-phone number character into the 
+        "to" field automatically starts searching 
+        your contacts.
+      - Automatically fills in your "From" at 
+        startup with your default number on your 
+        "me" card.
+      - Now does name/password checks when you set 
+        your preferences.
+      - Added a version number in the lower left of 
+        the preferences field.
+      - Added a "from number" AppleScript property 
+        so you can set your from number via 
+        scripting without actually having to dial.
       - Gave Vocito "dial apps" their own icon.
+
+1.0.1   2008/11/18
+      - Fixes small activation bug at startup.
