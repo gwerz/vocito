@@ -104,9 +104,14 @@ NSString *const InstalledPlugInsVersionKey = @"InstalledPlugInsVersionKey";
     ABMultiValue *phones = [me valueForProperty:kABPhoneProperty];
     unsigned count = [phones count];
     for (unsigned i = 0; i < count; ++i) {
-      id value = [phones valueAtIndex:i];
-      [array removeObject:value];
-      [array addObject:value];
+      NSString *label = [phones labelAtIndex:i];
+      BOOL isFax = ([label isEqual:kABPhoneHomeFAXLabel] 
+                    || [label isEqual:kABPhoneWorkFAXLabel]);
+      if (!isFax) {
+        id value = [phones valueAtIndex:i];
+        [array removeObject:value];
+        [array addObject:value];
+      }
     }
     NSString *identifier = [phones primaryIdentifier];
     if (identifier) {

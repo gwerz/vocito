@@ -65,6 +65,7 @@
 		8BE843450E91EBF700C611B0 /* GTMDebugThreadValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */; };
 		8BE846600E930AD300C611B0 /* Vocito.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8465F0E930AD300C611B0 /* Vocito.pdf */; };
 		8BE846650E930C2300C611B0 /* VocitoInvert.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846640E930C2300C611B0 /* VocitoInvert.pdf */; };
+		8BF519BD0EDC836500D981A0 /* releaseNotes_1_1_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BF519BC0EDC836500D981A0 /* releaseNotes_1_1_1.txt */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -198,6 +199,7 @@
 		8BE843440E91EBF700C611B0 /* GTMDebugThreadValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMDebugThreadValidation.m; sourceTree = "<group>"; };
 		8BE8465F0E930AD300C611B0 /* Vocito.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Vocito.pdf; sourceTree = "<group>"; };
 		8BE846640E930C2300C611B0 /* VocitoInvert.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = VocitoInvert.pdf; sourceTree = "<group>"; };
+		8BF519BC0EDC836500D981A0 /* releaseNotes_1_1_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = releaseNotes_1_1_1.txt; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Vocito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -440,6 +442,7 @@
 				8BDA35EE0ED2268B0051CE98 /* releaseNotes_1_0_0.txt */,
 				8B84B7330ED4DD23003D9F0F /* releaseNotes_1_0_1.txt */,
 				8B84B7320ED4DD18003D9F0F /* releaseNotes_1_1_0.txt */,
+				8BF519BC0EDC836500D981A0 /* releaseNotes_1_1_1.txt */,
 				8BDA35E00ED224F90051CE98 /* VocitoAppcast.xml */,
 			);
 			path = installer;
@@ -545,6 +548,7 @@
 				8BDA35590ED217F60051CE98 /* dsa_pub.pem in Resources */,
 				8BDA35EF0ED2268B0051CE98 /* releaseNotes_1_0_0.txt in Resources */,
 				8B84B86A0ED4F407003D9F0F /* StartupScreen.xib in Resources */,
+				8BF519BD0EDC836500D981A0 /* releaseNotes_1_1_1.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
