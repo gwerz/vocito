@@ -109,7 +109,7 @@ and when clicked on, Vocito will dial that number from the last "From" number us
   _ _*A)* Vocito is "call" in Latin.
 
  _ _*Q)* How do you pronounce Vocito?<br>
- _ _*A)* Voe-kee-toe. According to most scholars, Latin speakers used a hard 'c' (sounds like an English 'k') as opposed to the soft 'c' (sounds like an English 'ch') used by Italians and the traditional Catholic Church. We decided to go with the hard 'c' to give us some street cred with all the Latin scholars out there.
+ _ _*A)* Voe-kee-toe. According to most scholars, Latin speakers used a hard 'c' (sounds like an English 'k') as opposed to the soft 'c' (sounds like an English 'ch') used by Italians and the traditional Catholic Church. We decided to go with the hard 'c' to give us some street cred with all the Latin scholars out there.<br>
  _ _*A2)* I have been informed by many people that if I knew anything about Latin I would know that they pronounced 'v's as 'w's and that it should then by Woe-kee-toe. I'm sticking with the hard 'V' sound and the hard 'C' sound.
 
   _ _*Q)* How can I give input regarding this page to make it better?<br>
