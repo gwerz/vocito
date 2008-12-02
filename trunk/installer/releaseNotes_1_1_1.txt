@@ -1,7 +1,8 @@
-1.1.1   2008/11/25
+1.1.1   2008/12/02
       - Fax numbers will not be included in "From"
         numbers by default.
-        
+      - Added help button
+      
 1.1.0   2008/11/21
       - Fixes problem dialing on some Tiger systems.
       - Fixes problem with scripts on Tiger.
