@@ -41,4 +41,5 @@
 - (IBAction)goToGrandCentral:(id)sender;
 - (IBAction)saveAsApplication:(id)sender;
 - (IBAction)checkForUpdates:(id)sender;
+- (IBAction)goToHelp:(id)sender;
 @end

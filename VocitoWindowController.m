@@ -289,6 +289,14 @@
   [[SUUpdater sharedUpdater] checkForUpdates:sender];
 }
 
+- (IBAction)goToHelp:(id)sender {
+  NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+  NSURL *helpURL 
+    = [NSURL URLWithString:@"http://code.google.com/p/vocito/wiki/VocitoHelp"];
+  [ws openURL:helpURL];
+  [[self window] close];
+}
+
 - (void)controlTextDidChange:(NSNotification *)notification {
   if ([[notification object] isEqual:toNumber_]) {
     NSString *number = [toNumber_ stringValue];
