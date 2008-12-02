@@ -94,6 +94,9 @@ and when clicked on, Vocito will dial that number from the last "From" number us
   _ _*Q)* Vocito won't dial a 7 digit number<br>
   _ _*A)* Vocito requires an area code, because Grand Central requires an area code. Please add an area code to make it a 10 digit number.
 
+  _ _*Q)* Does Vocito work with [http://gizmo5.com Gizmo]?<br>
+  _ _*A)* As far as I know yes, but for it to work as your "from number" you must have "Callin" capabilities turned on for your Gizmo sip number.
+
   _ _*Q)* Vocito appears to be dialing, but doesn't do anything<br>
   _ _*A)* Please be sure that neither the "To" or the "From" number is your !GrandCentral number.
 
