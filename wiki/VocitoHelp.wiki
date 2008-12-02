@@ -54,10 +54,18 @@ Vocito supports a single command: *dial* text [*from* text]
 
 A simple Vocito script would look like this:
 {{{
-tell app "Vocito"
+tell application "Vocito"
   dial "1234567890" from "9876543210"
 end tell
 }}}
+
+Vocito also supports a "from number" property on the application object.
+{{{
+tell application "Vocito"
+	set from number to "1234567890"
+end tell
+}}}
+This allows people using applications such as [http://www.symonds.id.au/marcopolo/ MarcoPolo] to set their "from number" based on their location. 
 
 = Save As =
 Choosing "Save As" from the Gear menu allows you to save an applet that will dial the currently selected numbers in the "From" and "To" box.
